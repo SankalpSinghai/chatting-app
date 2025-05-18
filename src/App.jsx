@@ -3,8 +3,8 @@ import ChatList from './components/ChatList'
 import ChatWindow from './components/ChatWindow';
 import { conversations } from './data/conversations';
 import { messages } from './data/messages';
-import './App.css'
 import { getRandomChatSentence } from './utils';
+import './App.css'
 
 const myUserID = 'user123';
 
@@ -12,7 +12,7 @@ function App() {
   const [activeConversation, setActiveConversation] = useState('user456');
   const [messageByConversation, setMessageByConversation] = useState(messages);
   const [myMsg, setMsg] = useState('');
-  
+
   const handleClick = (userID) => {
     setActiveConversation(userID);
   }
@@ -20,7 +20,7 @@ function App() {
     setMsg(e.target.value);
   }
 
-  const onMsgSent = () => {
+  const handleMsgSent = () => {
     const currentUserConversation = messageByConversation[activeConversation];
     const newMsg = {
       id: `msg${currentUserConversation.length + 1}`,
@@ -58,7 +58,7 @@ function App() {
           status: 'delivered',
           isTyping: false,
         }
-        if(activeUserMsgs[activeUserMsgs.length - 1].isTyping){
+        if (activeUserMsgs[activeUserMsgs.length - 1].isTyping) {
           activeUserMsgs?.pop();
         }
         return ({
@@ -76,8 +76,18 @@ function App() {
 
   return (
     <div className='flex h-screen bg-gray-100'>
-      <ChatList conversations={conversations} activeConversation={activeConversation} onClick={handleClick} />
-      <ChatWindow messages={messageByConversation[activeConversation]} currentUser={activeConversation} onChange={handleChange} myMsg={myMsg} onMsgSent={onMsgSent}  />
+      <ChatList
+        conversations={conversations}
+        activeConversation={activeConversation}
+        onClick={handleClick}
+      />
+      <ChatWindow
+        messages={messageByConversation[activeConversation]}
+        currentUser={activeConversation}
+        onChange={handleChange}
+        myMsg={myMsg}
+        onMsgSent={handleMsgSent}
+      />
     </div>
   )
 }
