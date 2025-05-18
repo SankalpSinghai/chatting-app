@@ -2,7 +2,7 @@ import React from "react";
 import { Send } from "lucide-react";
 
 
-export default function MessageInput({onChange, myMsg, onMsgSent}) {
+export default function MessageInput({ onChange, myMsg, onMsgSent }) {
     return (
         <div className="flex items-center space-x-2">
             <input
@@ -13,7 +13,9 @@ export default function MessageInput({onChange, myMsg, onMsgSent}) {
                 onChange={onChange}
             />
             <button
-                className="bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 focus:outline-none disabled:opacity-50" onClick={onMsgSent} disabled={!myMsg}>
+                className="bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 focus:outline-none disabled:opacity-50"
+                onClick={onMsgSent}
+                disabled={!myMsg}>
                 <Send size={20} />
             </button>
         </div>

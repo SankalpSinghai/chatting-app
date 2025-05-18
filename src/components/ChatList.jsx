@@ -9,7 +9,12 @@ export default function ChatList({ conversations, activeConversation, onClick })
                 <ConversationSearch />
             </div>
             {conversations.map((conversation) => (
-                <UserConversation key={conversation?.id} conversation={conversation} isActive={activeConversation === conversation?.id} onClick={onClick} />
+                <UserConversation
+                    key={conversation?.id}
+                    conversation={conversation}
+                    isActive={activeConversation === conversation?.id}
+                    onClick={onClick}
+                />
             ))}
         </div>
     )
